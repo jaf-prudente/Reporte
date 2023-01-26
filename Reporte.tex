@@ -1,0 +1,203 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Platilla LaTeX para reporte de laboratorio
+% Facultad de Ciencias de la UNAM
+%
+% Autor: Jaf Prudente
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Cabe mencionar que ésto es sólo una platilla que se debe adaptar a las exigencias, recomendaciones y a la evaluación del laboratorio en curso además, sobre todo, a la experiencia de quien haga uso de éste archivo. Puede que no sea la mejor platilla y que tenga muchos defectos, pero el principal objetivo de ella es ser de ayuda para la supervivencia de los laboratorios con el uso de \LaTeX. El autor desea desde el fondo de su kokoro haber contribuído al menos un poco en éste hecho.
+
+%------------------------------------------------------------
+%	PREÁMBULO
+%------------------------------------------------------------
+
+% Como \LaTeX tiene la estructura de lenguaje de programación también tiene el análogo a importar bibliotecas, aquí se importan las bibliotecas más usadas. La primera línea define el tipo de texto del que se trata, el tamaño de la hoja, el tamaño de la fuente base y en este caso indica que es a doble columna.
+
+\documentclass[11pt, twocolumn]{article} 
+
+\usepackage{graphics,graphicx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage[spanish,es-nodecimaldot,es-tabla]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[title]{appendix}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{braket}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{afterpage}
+\usepackage{titling} 
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{selinput}
+\usepackage{booktabs} 
+\usepackage{lettrine}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{tikz}
+
+\usepackage{amsfonts} 
+\usepackage[centertags]{amsmath}
+\usepackage{stmaryrd,amssymb,amsthm}
+\usepackage{wasysym,mathrsfs}
+
+\usepackage[font=footnotesize,labelfont=small]{caption}
+\captionsetup{width=0.85\linewidth}
+
+\RequirePackage{geometry}
+\geometry{margin=1.9cm}
+
+\usepackage{parskip}
+\setlength{\parskip}{0.2cm}
+\setlength{\parindent}{0pt}
+
+% Está comentado porque la bibliografía se pone manualmente, si se tiene un archivo .bib se activa éste comando.
+%\usepackage[square,numbers,sort]{natbib}
+%\bibliographystyle{unsrt}
+
+\selectlanguage{spanish}
+
+%------------------------------------------------------------
+%	DEFINICIONES
+%------------------------------------------------------------
+% En \LaTeX también es posible definir comandos para hacenos más fácil la vida. Por ejemplo el comando \sol escribe, alineado a la izquierda la palabra Sol con la S escrita en forma más elegante, todo para indicar dónde comienza la solución a un problema. Algo análogo para los otros comandos nuevos.
+
+\newcommand{\sol}{
+	\begin{flushleft}
+		$ \mathbb{S}ol. $
+\end{flushleft}}
+
+
+%------------------------------------------------------------
+%	CARÁTULA
+%------------------------------------------------------------
+
+\author{Fulano}
+\title{Reporte}
+\date{}
+
+\begin{document} 
+	
+\twocolumn[\begin{@twocolumnfalse}
+		
+\begin{center}
+
+	{\Large Título del experimento} \vspace{5pt}
+		
+	Fulanito \textsc{de Tal}\footnotemark \\
+	Facultad de Ciencias, \textsl{UNAM} \\
+	Laboratorio de Física Contemporánea I: Proyecto Nº 1 \\
+	Profesores: Dr. Perengano de Tal \& Ayudante Perenganito \vspace{5pt} 
+
+	Enero, 2023
+			
+\end{center}
+
+
+%------------------------------------------------------------
+%	ABSTRACT
+%------------------------------------------------------------
+
+\rule{\textwidth}{1pt}
+
+\begin{abstract}
+	Todas las prácticas tienen que tener un resumen que explique qué se hizo, cómo se hizo, y con qué motivo se hizo. Además de escribir a grandes rasgos los resultados a los que se llegó.
+\end{abstract}
+
+\rule{\textwidth}{1pt}
+
+\vspace{20pt}
+
+\end{@twocolumnfalse}]
+
+\footnotetext{\url{correo_de_fulanito@ciencias.unam.mx}}
+
+
+%------------------------------------------------------------
+%	INTRODUCCIÓN
+%------------------------------------------------------------
+
+\section*{Introducción}
+\label{sec:Intro}
+
+En la introducción se coloca el marco teórico, \textit{i.e.} cuál es la teoría que sustenta el experimento, así como todas las ecuaciones que se usan para explicar los fenómenos descritos y además las hipótesis. Esta es la sección \ref{secIntro}.
+
+
+%------------------------------------------------------------
+%	DESARROLLO
+%------------------------------------------------------------
+
+\section*{Arreglo experimental}
+\label{sec:Arreglo}
+
+% En el siguiente párrafo se muestra cómo referenciar objetos los cuales se etiquetan con '\label{}'.
+
+En la sección \ref{sec:Arreglo} se explica a detalle qué se hizo. Además de explicar el arreglo experimental y mostrar diagramas de dicho arreglo.
+
+Y así se insertan imágenes en \LaTeX:
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=.8\columnwidth]{./images/yolo.jpg}
+	\caption{Los gatitos siempre nos demuestran su ternura.}
+	\label{figGatito}
+\end{figure}
+
+la opción \url{[!ht]} sirve para que la imagen esté justo donde está en el \url{.tex}. La opción de tamaño en la imagen está en relación a la anchura de la columna, así en caso de tener \url{[width=.9\columnwidth]} la imagen tendrá una anchura del $ 90 \% $. Además se escribe la dirección de la imagen a insertar entre las llaves a lado de la opción de tamaño, si la imagen está en el mismo directorio (carpeta) que el \url{.tex} basta con poner el nombre, pero por cuestiones de orden es mejor crear un directorio (una carpeta) especial para las imágenes, en éste caso se llama '\textit{images}' y está en la misma carpeta que el \url{.tex}.
+
+
+%------------------------------------------------------------
+%	RESULTADOS
+%------------------------------------------------------------
+
+\section*{Resultados}
+\label{sec:Resultados}
+
+Aquí se explican de forma concisa a qué se llegó después de realizar el experimento. Se enuncian cronológicamente. Se suele hacer el análisis de datos en ésta sección.
+
+
+%------------------------------------------------------------
+%	DISCUSION
+%------------------------------------------------------------
+
+\section*{Discusión}
+\label{sec:Discusion}
+
+En ésta sección se explican los resultados, el porqué se dieron, cómo se dieron y en caso de no adaptarse a la teoría se explica porqué y cómo mejorar o la teoría o el desarrollo experimental.
+
+
+%------------------------------------------------------------
+%	CONCLUSIONES
+%------------------------------------------------------------
+
+\section*{Conclusiones}
+\label{sec:Conclusiones}
+
+Aquí se mencionan todas las conclusiones a las que se llegaron y si sí se cumplieron las hipótesis o no.
+
+
+%------------------------------------------------------------
+%	BIBLIOGRAFÍA
+%------------------------------------------------------------
+
+% En este caso la bibliografía se escribió a mano, pero puede usarse bibtex para gestionarla. El hecho de escribir una a una las fuentes requiere que las escribamos con el formato deseado, pero siempre debe ser el mismo. Para citar alguna fuente citada se ocupa la palabra clave dentro del \bibitem{}, por ejemplo para citar a la primer fuente se usa el comando \cite{Heyl}.
+
+\begin{thebibliography}{X} 
+
+	\bibitem{Heyl} Heyl, J. (2008). \textit{The Double Pendulum Fractal}. Department of Physics	and Astronomy, University of British Columbia.
+	
+	\bibitem{DelAngel} Del Ángel, A. (2022). \textit{Práctica: el péndulo doble}. Laboratorio de Física Contemporánea II, Universidad Nacional Autónoma de México.
+	
+	\bibitem{Chapra} Chapra, S. \& Canale, R. (2011). \textit{Métodos numéricos para ingenieros}. McGraw-Hill.
+	
+	\bibitem{Thorton} Thorton, S. \& Marion, J. (2008). \textit{Classical Dynamics}. Cengage Learning.
+	
+\end{thebibliography}
+
+
+\end{document}
